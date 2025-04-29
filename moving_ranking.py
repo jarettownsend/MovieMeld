@@ -21,7 +21,7 @@ def get_runtime_category(runtime, user_preference):
 def apply_genre_score(row, user_inputs):
     """Calculate the genre score based on user preferences and movie genres"""
     movie_genres = row['Genre'].split(', ') if pd.notna(row['Genre']) else []
-    genre_points = {'genre1': 5, 'genre2': 3, 'genre3': 1}
+    genre_points = {'genre1': 5, 'genre2': 3}
     
     max_points = 0
     for genre_key, points in genre_points.items():
@@ -40,7 +40,8 @@ def rank_movies(df, inputs_1, inputs_2):
     inputs_2: Dictionary with user 2's preferences. 
     Example:
         {'review_preference': 'Audience', 
-        'genre1':'Comedy', 'genre2':'Drama', 'genre3':'Adventure',
+        'genre1':'Comedy', 
+        'genre2':'Drama',
         'release_category': 'Recent',
         'runtime_preference': 'Medium',}
     
