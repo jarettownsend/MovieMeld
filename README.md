@@ -4,7 +4,7 @@ MovieMeld is a fun and simple web app built with Streamlit that helps two users 
 
 ## 🚀 Demo
 
-Try it live on [Streamlit Cloud](https://your-streamlit-url-here)  
+Try it live on [Streamlit Cloud](https://moviemeld.streamlit.app/)  
 
 ---
 
