@@ -16,8 +16,8 @@ RELEASE_CATEGORIES = ['Modern', 'Classic', 'All']
 REVIEW_PREFS = ['Neutral', 'Critics', 'Audience']
 
 
-st.title('🎬 Movie Matcher!')
-
+st.title('🎬 MovieMeld 🎬')
+st.text('Discover a movie both viewers would like based on shared preferences')
 st.header('User Preferences')
 
 col1, col2 = st.columns(2)
@@ -26,17 +26,17 @@ with col1:
     st.subheader('User 1')
     genre1_user1 = st.selectbox('Favorite Genre 1 ', GENRE_OPTIONS, index=0)
     genre2_user1 = st.selectbox('Favorite Genre 2 ', GENRE_OPTIONS, index=1)
-    review_pref_user1 = st.selectbox('Reviews Preference ', REVIEW_PREFS)
     runtime_pref_user1 = st.selectbox('Runtime Preference ', RUNTIME_PREFS, index=2)
     release_cat_user1 = st.selectbox('Release Category ', RELEASE_CATEGORIES, index=2)
+    review_pref_user1 = st.selectbox('Reviews Preference ', REVIEW_PREFS)
 
 with col2:
     st.subheader('User 2')
     genre1_user2 = st.selectbox('Favorite Genre 1', GENRE_OPTIONS, index=0)
     genre2_user2 = st.selectbox('Favorite Genre 2', GENRE_OPTIONS, index=1)
-    review_pref_user2 = st.selectbox('Reviews Preference', REVIEW_PREFS)
     runtime_pref_user2 = st.selectbox('Runtime Preference', RUNTIME_PREFS, index=2)
     release_cat_user2 = st.selectbox('Release Category', RELEASE_CATEGORIES, index=2)
+    review_pref_user2 = st.selectbox('Reviews Preference', REVIEW_PREFS)
 
 # Button to trigger recommendation
 if st.button('Find Movies'):
@@ -57,9 +57,9 @@ if st.button('Find Movies'):
 
     ranked_movies = rank_movies(df.copy(), inputs_1, inputs_2)
     
-    top_10 = ranked_movies.head(10)
-    if not top_10.empty:
-        random_top_3 = top_10.sample(min(3, len(top_10)), random_state=42)
+    top_5 = ranked_movies.head(5)
+    if not top_5.empty:
+        random_top_3 = top_5.sample(min(3, len(top_5)), random_state=42)
         for _, row in random_top_3.iterrows():
             cols = st.columns([1, 5]) 
             with cols[0]:
